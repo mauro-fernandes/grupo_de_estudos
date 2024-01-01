@@ -1,18 +1,18 @@
 import { useState } from "react";
-//import todos from "../app/page";
+import API from "../app/page";
 
 const ToDoForm = ({ addTodo }: any) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!title || !category) {
       return;
-      //alert("Preencha todos os campos!");
     }
 
     addTodo(title, category);
+
     setTitle("");
     setCategory("");
   };

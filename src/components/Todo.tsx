@@ -1,4 +1,9 @@
-
+type Todo = {
+  id: number;
+  title: string;
+  category: string;
+  isCompleted: boolean;
+};
 
 const Todo = ({ todo, removeTodo, completeTodo }: any) => {
   return (
