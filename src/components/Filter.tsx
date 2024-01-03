@@ -1,6 +1,12 @@
 import React from "react";
 
-const Filter = ({filter, setFilter, setSort}: any) => {
+export type FilterProps = {
+  filter: string;
+  setFilter: (filter: string) => void;
+  setSort: (sort: string) => void;
+};
+
+const Filter = ({filter, setFilter, setSort}: FilterProps) => {
   return (
     <div className="filter">
       <h2>Filtrar</h2>

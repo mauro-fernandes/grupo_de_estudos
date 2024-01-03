@@ -1,7 +1,12 @@
 import { useState } from "react";
 import API from "../app/page";
 
-const ToDoForm = ({ addTodo }: any) => {
+export type ToDoFormProps = {
+  addTodo: (title: string, category: string) => void;
+}
+
+
+const ToDoForm = ({ addTodo }: ToDoFormProps) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -27,6 +32,7 @@ const ToDoForm = ({ addTodo }: any) => {
             onChange={(e) => setTitle(e.target.value)}
             type="text"
             placeholder="digite aqui a tarefa..."
+            required
           />
           <select
             value={category}
@@ -41,10 +47,11 @@ const ToDoForm = ({ addTodo }: any) => {
             <option value="hobby">Hobby</option>
             <option value="personal">Personal</option>
           </select>
-          <div>
-            <button className="" type="submit" value="Adicionar">
+          <button className="" type="submit" value="Adicionar">
               Criar Tarefa
             </button>
+          <div>
+            
           </div>
         </form>
       </div>

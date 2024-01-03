@@ -1,6 +1,10 @@
 import React from 'react'
 
-const MyContainer = ({children}: any) => {
+type MyContainerProps = {
+  children: React.ReactNode
+}
+
+const MyContainer = ({children} : MyContainerProps) => {
   return (
     <div className='my-container'>{children}</div>
   )

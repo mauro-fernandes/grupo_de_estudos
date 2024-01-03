@@ -9,7 +9,7 @@ https://coder-coder.com/background-image-opacity/
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #c28d2327;
-  padding: 3rem;
+  padding: 1rem;
   color: #000000;
   position: relative;
   /* background-image: url("../img/livros.jpg") ; */
@@ -20,7 +20,8 @@ body {
 
 body::before {
   content: "";
-  background-image: url("..//img/pexels-steve-johnson-1269968.jpg");
+  background-image: url("..//img/pexels-steve-johnson-1269968\ \(Médio\).jpg");
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   position: fixed;
@@ -33,7 +34,7 @@ body::before {
 .app {
   isolation: isolate;
   max-width: 600px;
-  margin: 0 auto 300px;
+  margin: auto;
   background: rgba(255, 255, 255, 0.7);
   padding: 30px 60px;
   border-radius: 25px;
@@ -51,14 +52,18 @@ body::before {
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   font-size: 3rem;
   /* background-color: #fff; */
   border-radius: 15px;
 }
 
 h2 {
-  margin-bottom: 10px;
+  margin-top: 0.3rem;
+}
+
+h4 {
+  margin-top: 5px;
 }
 
 p {
@@ -70,7 +75,8 @@ select {
   box-sizing: border-box;
   align-items: center;
   padding: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-left: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
   width: 60%;
@@ -85,12 +91,12 @@ button {
   color: #ffffff;
   padding: 5px 10px;
   margin-bottom: 15px;
+  margin-left: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   opacity: 0.6;
   transition: 0.3s;
-  margin-right: 0.5em;
 }
 
 button:hover {
@@ -140,7 +146,7 @@ button:active {
 
 .todo {
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   border: 2px solid #fff;
   background-color: #fff;
@@ -155,7 +161,7 @@ button:active {
 .todo-form,
 .todo-list {
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   justify-content: space-between;

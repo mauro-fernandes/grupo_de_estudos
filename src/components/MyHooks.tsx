@@ -6,7 +6,7 @@ const Hooks = () => {
   const [novaIdade, setNovaIdade] = useState(39);
 
   const changeAge = () => {
-    idade = 40;
+    idade = idade + 1;
     console.log(idade);
   };
 

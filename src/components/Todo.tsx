@@ -1,26 +1,27 @@
-type Todo = {
-  id: number;
-  title: string;
-  category: string;
-  isCompleted: boolean;
+export type ToDoProps = {
+  todo: Todo;
+  removeTodo: (id: number) => void;
+  completeTodo : (id: number) => void;
+  editTodo: (id: number) => void;
 };
 
-const Todo = ({ todo, removeTodo, completeTodo }: any) => {
+const Todo = ({ todo, editTodo, removeTodo, completeTodo }: ToDoProps) => {
+  
   return (
     <>
       <div
         className="todo"
         style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
       >
-        <div className="text"
-        
-        >
-          <p>{todo.title}</p>
+        <div className="text">
+          <h4>{todo.title}</h4>
+          <p></p>
           <div className="category">
             <p>({todo.category})</p>
           </div>
         </div>
         <div className="button">
+          <button className="edit" onClick={() => editTodo(todo.id)}>editar</button>
           <button className="complete" onClick={() => completeTodo(todo.id)}>
             concluído
           </button>
