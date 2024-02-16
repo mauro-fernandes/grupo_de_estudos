@@ -3,9 +3,11 @@ export type ToDoProps = {
   removeTodo: (id: number) => void;
   completeTodo : (id: number) => void;
   editTodo: (id: number) => void;
+  setTodos: (todos: any) => any;
+  todos?: any;
 };
 
-const Todo = ({ todo, editTodo, removeTodo, completeTodo }: ToDoProps) => {
+const Todo = ({ todo, editTodo, removeTodo, completeTodo, setTodos, todos, }: ToDoProps) => {
   
   return (
     <>
@@ -25,7 +27,13 @@ const Todo = ({ todo, editTodo, removeTodo, completeTodo }: ToDoProps) => {
           <button className="complete" onClick={() => completeTodo(todo.id)}>
             concluído
           </button>
-          <button className="remove" onClick={() => removeTodo(todo.id)}>
+          <button className="remove" onClick={() => {
+            removeTodo (todo.id);
+            const filteredTodos = todos.filter((t: any) => t.id !== todo.id);
+            console.log("removendo tarefa: " + todo.id)
+            setTodos(filteredTodos);
+          }
+          }>
             X
           </button>
         </div>

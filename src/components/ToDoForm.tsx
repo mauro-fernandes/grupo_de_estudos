@@ -39,6 +39,7 @@ const ToDoForm = ({ addTodo }: ToDoFormProps) => {
             onChange={(e) => setCategory(e.target.value)}
             name="category"
             id="category"
+            required
           >
             <option value="">Selecione uma categoria</option>
             <option value="home">Home</option>

@@ -1,31 +1,30 @@
 import { useEffect, useState } from "react";
 
 const Hooks = () => {
-  let idade = 39;
-
+  
+  const [contagem, setContagem] = useState(0);
   const [novaIdade, setNovaIdade] = useState(39);
 
-  const changeAge = () => {
-    idade = idade + 1;
-    console.log(idade);
+  const countPlus1 = (contagem: number) => {
+    setContagem(contagem + 1);
   };
 
   const changeNewAge = (novaIdade: number) => {
-    setNovaIdade(novaIdade + 1);
-    console.log(novaIdade + 1);
+    setNovaIdade(novaIdade +1);
   }
 
-  useEffect(() => { 
-    console.log("useEffect ativado");
-  });
+  // useEffect(() => { 
+  //   console.log("useEffect MyHooks contagem: ", contagem);
+  // }, [ contagem ]);
   
 
 
   return (
-    <div>
+    <div className="my-hooks">
       <h1>My Hooks</h1>
-      <p>Idade: {idade}</p>
-      <button onClick={changeAge}>Mudar idade</button>
+      <p>contagem: {contagem}</p>
+      <button onClick={() => setContagem(contagem + 1)}>Clicou x {contagem}</button>
+      <button onClick={() => countPlus1(contagem)}>Clicou x {contagem}</button>
 
       <p>Nova idade: {novaIdade}</p>
       {/* <button onClick={() => setNovaIdade(novaIdade+1)}>Mudar nova idade</button> */}

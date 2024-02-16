@@ -8,7 +8,7 @@ const MyImageCompnt = (props: Props) => {
     <>
       <div>
         <a href="#">
-          <Image src="/todo.webp" alt="" width="500" height={300} />
+          <Image  src="/todo.webp" alt="" width="500" height={300} priority={true}/>
         </a>
       </div>
     </>

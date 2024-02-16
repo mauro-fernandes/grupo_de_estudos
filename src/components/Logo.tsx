@@ -7,7 +7,7 @@ const Logo = (props: Props) => {
   return (
     <Image
       className="logo"
-      src="/check-list.png"
+      src="/favicon.ico"
       alt="Picture of the author"
       width={100}
       height={100}

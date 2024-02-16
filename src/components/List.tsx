@@ -6,8 +6,8 @@ const List = () => {
   ]
 
   return (
-    <div>
-      <h1>My List</h1>
+    <div className="box">
+      <h3>My List</h3>
       <ul>
         {items.map(item => (
           <li key={item.id}>{item.name}</li>

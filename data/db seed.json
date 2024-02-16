@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Fazer café",
+      "category": "home",
+      "isCompleted": true
+    },
+    {
+      "id": 2,
+      "title": "Estudar React",
+      "category": "work",
+      "isCompleted": true
+    },
+    {
+      "id": 3,
+      "title": "Estudar React Native",
+      "category": "work",
+      "isCompleted": true
+    },
+    {
+      "id": 4,
+      "title": "Estudar Node",
+      "category": "work",
+      "isCompleted": false
+    },
+    {
+      "id": 5,
+      "title": "Estudar Typescript",
+      "category": "work",
+      "isCompleted": false
+    },
+    {
+      "id": 6,
+      "title": "lavar o carro",
+      "category": "home",
+      "isCompleted": false
+    }
+  ]
+}
