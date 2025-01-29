@@ -1,4 +1,4 @@
-type Todo = {
+type TodoItem = {
   id: number;
   title: string;
   category: string;
@@ -13,5 +13,5 @@ type ToDoForm = {
   };
 
 type TodoList = {
-  todos: Todo[];
+  todos: TodoItem[];
 };

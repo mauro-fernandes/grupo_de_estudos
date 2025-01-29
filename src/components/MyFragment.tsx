@@ -1,3 +1,5 @@
+//learning about fragments (not used in this project)
+
 type MyFragmentProps = {
   divtype: string;
 }

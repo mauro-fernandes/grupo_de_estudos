@@ -14,7 +14,7 @@ import Todo from "../components/Todo";
 export const API = "http://localhost:3333";
 
 export default function App() {
-  const [todos, setTodos] = useState<Todo[] | null | undefined>(null);
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Asc");
@@ -28,39 +28,39 @@ export default function App() {
         .then((data) => data)
         .catch((error) => {
           console.log(error);
-          setTodos(null);
+          setTodoList([]);
         })
         .finally(() => console.log("finally fetch todos"));
 
-      setTodos(response);
+      setTodoList(response);
       setLoading(false);
     };
     loadData();
   }, []);
 
   const handleAddTodo = async (title: string, category: string) => {
-    const todo = {
-      id: todos ? todos.length + 1 : 1,
+    const todoItem = {
+      id: todoList ? todoList.length + 1 : 1,
       title,
       category,
       isCompleted: false,
     };
 
-    const newTodos = todos ? [...todos, todo] : [todo];
+    const updatedTodoList = todoList ? [...todoList, todoItem] : [todoItem];
     await fetch(API + "/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(todo),
+      body: JSON.stringify(todoItem),
     });
     setFilter("All");
     setSearch("");
-    setTodos(newTodos);
+    setTodoList(updatedTodoList);
   };
 
   const handleRemoveTodo = async (id: number) => {
-    const newTodos = todos ? [...todos] : [];
+    const newTodos = todoList ? [...todoList] : [];
     await fetch(API + "/todos/" + id, {
       method: "DELETE",
     });
@@ -72,7 +72,7 @@ export default function App() {
   };
 
   const handleCompleteTodo = async (id: number) => {
-    const newTodos = todos ? [...todos] : [];
+    const newTodos = todoList ? [...todoList] : [];
     newTodos.map(async (todo) => {
       if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
@@ -85,12 +85,12 @@ export default function App() {
         });
       } else todo = todo;
     });
-    setTodos(newTodos);
+    setTodoList(newTodos);
   };
 
   // TODO: Editar tarefa
   const handleEditTodo = async (id: number) => {
-    const newTodos = todos ? [...todos] : [];
+    const newTodos = todoList ? [...todoList] : [];
     newTodos.map(async (todo) => {
       if (todo.id === id) {
         todo.title = todo.title;
@@ -108,7 +108,7 @@ export default function App() {
         });
       } else todo = todo;
     });
-    setTodos(newTodos);
+    setTodoList(newTodos);
   };
 
   if (loading) {
@@ -127,7 +127,7 @@ export default function App() {
     );
   }
 
-  if (todos === undefined) {
+  if (todoList === undefined) {
     return (
       <p style={{ textAlign: "center" }}>
         <ApiFail />
@@ -137,7 +137,7 @@ export default function App() {
 
   return (
     <>
-      {!loading && todos && (
+      {!loading && todoList && (
         <div className="p-10 app">
           <h1>
             <Logo /> Pra Fazê !
@@ -148,8 +148,8 @@ export default function App() {
             filter={filter}
             setFilter={setFilter}
             setSort={setSort}
-            todos={todos}
-            setTodos={setTodos}
+            todos={todoList}
+            setTodos={setTodoList}
             handleRemoveTodo={handleRemoveTodo}
           />
           <div className="todo-list">
@@ -157,18 +157,18 @@ export default function App() {
             <div className="todo-panel">
               <h2>Lista de afazeres:</h2>
               <div>
-                <PendingTasks todos={todos} />
+                <PendingTasks todoList={todoList} />
               </div>
             </div>
 
-            {todos?.length === 0 && (
+            {todoList?.length === 0 && (
               <div>
                 <h4> Não há tarefas! </h4>
                 <p>Crie..</p>
                 <MyImage />
               </div>
             )}
-            {todos
+            {todoList
               .filter((todo) => {
                 if (filter === "All") {
                   return todo;
@@ -189,10 +189,10 @@ export default function App() {
               .map((todo) => (
                 <Todo
                   key={todo.id}
-                  todo={todo}
+                  todoItem={todo}
                   removeTodo={handleRemoveTodo}
-                  setTodos={setTodos}
-                  todos={todos}
+                  setTodos={setTodoList}
+                  todoList={todoList}
                   completeTodo={handleCompleteTodo}
                   editTodo={() => console.log("editando")}
                 />

@@ -1,40 +1,52 @@
+import { DeleteOutlined } from "@mui/icons-material";
+
 export type ToDoProps = {
-  todo: Todo;
+  todoItem: TodoItem;
   removeTodo: (id: number) => void;
-  completeTodo : (id: number) => void;
+  completeTodo: (id: number) => void;
   editTodo: (id: number) => void;
   setTodos: (todos: any) => any;
-  todos?: any;
+  todoList?: TodoItem[];
 };
 
-const Todo = ({ todo, editTodo, removeTodo, completeTodo, setTodos, todos, }: ToDoProps) => {
-  
+const Todo = ({
+  todoItem,
+  editTodo,
+  removeTodo,
+  completeTodo,
+  setTodos,
+  todoList,
+}: ToDoProps) => {
   return (
     <>
-      <div
-        className="todo"
-        style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-      >
-        <div className="text">
-          <h4>{todo.title}</h4>
+      <div className="todo">
+        <div
+          className="text"
+          style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
+        >
+          <h4>{todoItem.title}</h4>
           <p></p>
           <div className="category">
-            <p>({todo.category})</p>
+            <p>({todoItem.category})</p>
           </div>
         </div>
-        <div className="button">
-          <button className="edit" onClick={() => editTodo(todo.id)}>editar</button>
-          <button className="complete" onClick={() => completeTodo(todo.id)}>
+        <div className="button" style={{ display: "flex" }}>
+          <button className="edit" onClick={() => editTodo(todoItem.id)}>
+            editar
+          </button>
+          <button className="complete" onClick={() => completeTodo(todoItem.id)}>
             concluído
           </button>
-          <button className="remove" onClick={() => {
-            removeTodo (todo.id);
-            const filteredTodos = todos.filter((t: any) => t.id !== todo.id);
-            console.log("removendo tarefa: " + todo.id)
-            setTodos(filteredTodos);
-          }
-          }>
-            X
+          <button
+            className="remove"
+            onClick={() => {
+              removeTodo(todoItem.id);
+              const filteredTodos = todoList ? todoList.filter((t: any) => t.id !== todoItem.id) : [];
+              console.log("removendo tarefa: " + todoItem.id);
+              setTodos(filteredTodos);
+            }}
+          >
+            <DeleteOutlined fontSize="medium" />
           </button>
         </div>
       </div>

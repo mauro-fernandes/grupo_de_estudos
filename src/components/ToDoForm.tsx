@@ -1,12 +1,10 @@
 import { useState } from "react";
-import API from "../app/page";
 
-export type ToDoFormProps = {
+export type AddTodoFormProps = {
   addTodo: (title: string, category: string) => void;
 }
 
-
-const ToDoForm = ({ addTodo }: ToDoFormProps) => {
+const ToDoForm = ({ addTodo }: AddTodoFormProps) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
