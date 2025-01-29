@@ -1,12 +1,11 @@
-import React from "react";
 
 type Props = {
-  todos: any
+  todoList: TodoItem[];
               };
 
 const PendingTasks = (props: Props) => {
-  console.log(props.todos);
-  const pending = props.todos.filter((todo: any) => !todo.isCompleted).length;
+  console.log(props.todoList);
+  const pending = props.todoList.filter((todo: TodoItem) => !todo.isCompleted).length;
 
   return (
     <div>
